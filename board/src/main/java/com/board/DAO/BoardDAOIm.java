@@ -1,5 +1,7 @@
 package com.board.DAO;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -37,6 +39,12 @@ public class BoardDAOIm implements BoardDAO {
 	 @Override
 	 public void delete(int bno) throws Exception {
 	  sql.delete(namespace + ".delete", bno);
+	 }
+
+	 //목록
+	 @Override
+	 public List<BoardVO> list() throws Exception {
+		return sql.selectList(namespace+".list");
 	 }
 	
 	

@@ -1,12 +1,16 @@
 package com.board.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.board.VO.BoardVO;
 import com.board.service.BoardService;
@@ -33,5 +37,27 @@ public class BoardController {
 		service.write(vo);
 
 		return "redirect:/";
+	}
+	
+	// 글목록
+	@RequestMapping(value = "list", method = RequestMethod.GET)
+	public void getList(Model model)	throws Exception{
+		logger.info("get list");
+		
+		List<BoardVO> list = service.list();
+		
+		model.addAttribute("list",list);
+		
+	}
+	
+	//글조희
+	@RequestMapping(value ="read", method = RequestMethod.GET)
+	public void getRead(@RequestParam("bno") int bno, Model model) throws Exception{
+		logger.info("get read");
+		
+		BoardVO vo = service.read(bno);
+		
+		model.addAttribute("read",vo);
+		
 	}
 }

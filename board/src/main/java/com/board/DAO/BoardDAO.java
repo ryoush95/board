@@ -1,5 +1,7 @@
 package com.board.DAO;
 
+import java.util.List;
+
 import com.board.VO.BoardVO;
 
 public interface BoardDAO  {
@@ -15,4 +17,7 @@ public interface BoardDAO  {
 	 
 	 // 삭제
 	 public void delete(int bno) throws Exception;
+	 
+	 //목록
+	 public List<BoardVO> list() throws Exception;
 }

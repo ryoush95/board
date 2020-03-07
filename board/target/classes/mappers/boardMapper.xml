@@ -32,4 +32,9 @@
 		myBoard
 		where bno = #{bno}
 	</delete>
+	
+	<!-- 목록 -->
+	<select id="list" resultType="com.board.VO.BoardVO">
+		select * from myboard order by bno desc
+	</select>
 </mapper>
